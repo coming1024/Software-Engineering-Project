@@ -42,8 +42,15 @@ public class UserController {
 //    }
 
     @CrossOrigin
-    @GetMapping(value = "/test")
+    @PostMapping(value = "/test")
     public User test(@Param("account") String account){
         return  userServer.test(account);
     }
+
+    @CrossOrigin
+    @PostMapping(value="/login")
+    public boolean login(@Param("account")String account,@Param("password")String password){
+        return userServer.login(account,password);
+    }
+
 }
