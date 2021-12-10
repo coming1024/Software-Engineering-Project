@@ -1,4 +1,5 @@
 package com.example.mydemo.service;
+import com.example.mydemo.pojo.BasicUser;
 import com.example.mydemo.pojo.User;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,8 @@ public interface UserService {
 
     //MyUsers regist(MyUsers myusers);
     User test(String account);
+    boolean login(String account,String password);
+    boolean pushUserComment(String userEmail,String experimentID,String content);
 
 }
 

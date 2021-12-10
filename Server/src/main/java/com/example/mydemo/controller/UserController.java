@@ -42,8 +42,20 @@ public class UserController {
 //    }
 
     @CrossOrigin
-    @GetMapping(value = "/test")
-    public User test(@Param("account") String account){
+    @GetMapping(value = "/getUserInfo")
+    public User test(@Param("userEmail") String account){
         return  userServer.test(account);
+    }
+
+    @CrossOrigin
+    @PostMapping(value="/login")
+    public boolean login(@Param("userEmail")String account,@Param("password")String password){
+        return userServer.login(account,password);
+    }
+
+    @CrossOrigin
+    @PostMapping(value = "/pushComment")
+    public boolean pushComment(@Param("userEmail")String userEmail,@Param("experimentID")String experimentID,@Param("content")String content){
+        return userServer.pushUserComment(userEmail,experimentID,content);
     }
 }

@@ -15,7 +15,8 @@ import java.util.List;
 @Mapper
 @Repository
 public interface ExperMapper {
-    @Insert("insert into experiment(purpose,process,conclusion) values (#{purpose},#{process},#{conclusion})")
+    @Insert("insert into experiment(userEmail,price,fixedCost,variableCost,bep,conclusion) values (#{userEmail},#{price},#{fixedCost},#{variableCost},#{bep},#{conclusion})")
     void insertExper(Experiment exper1);
+
 
 }

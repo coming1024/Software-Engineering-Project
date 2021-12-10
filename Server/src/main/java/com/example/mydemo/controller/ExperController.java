@@ -20,6 +20,4 @@ public class ExperController {
     public void writeExper(Experiment exper1){
         experService.writeExper(exper1);
     }
-
-
 }

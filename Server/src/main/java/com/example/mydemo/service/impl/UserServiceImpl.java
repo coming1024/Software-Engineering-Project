@@ -2,6 +2,7 @@ package com.example.mydemo.service.impl;
 
 import com.example.mydemo.mapper.UserMapper;
 
+import com.example.mydemo.pojo.BasicUser;
 import com.example.mydemo.pojo.User;
 import com.example.mydemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,14 @@ public class UserServiceImpl implements UserService {
         return userMapper.gettest(account);
     }
 
+    @Override
+    public boolean login(String account,String password){
+        return userMapper.getExists(account,password);
+    }
+
+    @Override
+    public boolean pushUserComment(String userEmail,String experimentID,String content){
+        return userMapper.pushComment(userEmail,experimentID,content);
+    }
 }
 
