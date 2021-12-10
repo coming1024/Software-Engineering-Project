@@ -6,7 +6,10 @@ import com.example.mydemo.service.impl.UserServiceImpl;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -57,5 +60,18 @@ public class UserController {
     @PostMapping(value = "/pushComment")
     public boolean pushComment(@Param("userEmail")String userEmail,@Param("experimentID")String experimentID,@Param("content")String content){
         return userServer.pushUserComment(userEmail,experimentID,content);
+    }
+
+    //导出数据到excle表里面
+    @GetMapping(value="/excel")
+    public void excelExport(HttpServletResponse response) throws IOException {
+        userServer.excelExport(response);
+    }
+
+    //    将excle表里面的数据保存到数据库
+    @PostMapping(value="/excel2")
+    public String excelImport(@RequestParam("file") MultipartFile file) throws IOException {
+        userServer.excelImport(file);
+        return "main";
     }
 }

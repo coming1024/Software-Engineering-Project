@@ -2,6 +2,7 @@ package com.example.mydemo.mapper;
 
 import com.example.mydemo.pojo.MyUsers;
 import com.example.mydemo.pojo.User;
+import com.example.mydemo.pojo.Users;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -25,6 +26,12 @@ public interface UserMapper {
     @Insert("insert into comment(userEmail,experimentID,content) values (#{userEmail},#{experimentID},#{content})")
     boolean pushComment(@Param("userEmail")String userEmail,@Param("experimentID")String experimentID,@Param("content")String content);
 
+    //查询所有的用户信息
+    @Select("select * from t_user")
+    List<Users> selUserMapper();
+
+    @Insert("insert into t_user (uid ,uname,pwd) values (#{uid},#{uname},#{pwd}) ")
+    int addUser(Users user);
 
 }
 
